@@ -20,38 +20,28 @@ import SwiftUI
 //
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 struct RootView: View {
-    // Utiliser les @State pour conserver l'information sur l'utilisateur pour afficher la bonne vue
-    // Utiliser des Bindings pour passer les étaits aux vues enfant
-    //
-    // Le code ici est vraiment plus pour un exemple simple, il faut évidemment utiliser des
-    // Services et/ou des ViewModels selon le besoin pour bien structurer le code.
-    //
-    @State private var isUserAuthenticated = false
-    @State private var isShowingLoginPage = false
-    
-    var body: some View {
-        VStack {
-            if isUserAuthenticated{
-                PokemonListView()
-            } else if isShowingLoginPage {
-                LoginView()
-                
-                // NOTE: Le changement devrait se faire dans le LoginView au succès de l'appel de l'API
-                Button("Aller sur l'écran de la liste de Pokémon") {
-                    isUserAuthenticated = true
-                }
-                .buttonStyle(.borderedProminent)
-            } else {
-                SplashView()
-                
-                // NOTE: Le changement devrait se faire dans le SplashView avec un délai de X secondes
-                Button("Aller sur l'écran de connexion") {
-                    isShowingLoginPage = true
-                }
-                .buttonStyle(.borderedProminent)
-            }
-        }
-    }
+	@State private var isUserAuthenticated = false
+	@State private var isShowingLoginPage = false
+
+	var body: some View {
+		ZStack {
+			if isUserAuthenticated {
+				PokemonListView()
+					.transition(.opacity)
+			} else if isShowingLoginPage {
+				VStack {
+					LoginView()
+					
+				}
+				.transition(.opacity)
+			} else {
+				SplashView(isShowingLoginPage: $isShowingLoginPage)
+				.transition(.opacity)
+					
+			}
+		}
+		.animation(.easeInOut(duration: 0.5), value: isUserAuthenticated || isShowingLoginPage)
+	}
 }
 
 #Preview {
