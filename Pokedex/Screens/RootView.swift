@@ -7,7 +7,7 @@ import SwiftUI
 //      2. Créer les Color Set pour les couleurs des types
 //      3. Créer un fichier pour la localisation des textes (Localizable.xcstrings)
 //          -  Pour avoir une clé avec interpolation de string, voir NSLocalizedString:
-//              Text(NSLocalizedString("MyTypeKey.\(type)", comment: ""))
+//            Text(NSLocalizedString("MyTypeKey.\(type)", comment: ""))
 //
 //      4. Selon les mockups, commencer à ajouter les textes nécessaires
 //      5. Prendre le temps de regarder les endpoints d'API disponibles et de regarder le JSON retourné
