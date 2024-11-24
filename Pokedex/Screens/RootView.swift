@@ -19,31 +19,34 @@ import SwiftUI
 //         aider à simplifier le code pour les 3 vues principaux (Login, List, Detail).
 //
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 struct RootView: View {
 	@State private var isUserAuthenticated = false
 	@State private var isShowingLoginPage = false
 
+	func isPageChanging() -> Bool{
+		return isUserAuthenticated || isShowingLoginPage
+	}
 	var body: some View {
 		ZStack {
-			if isUserAuthenticated {
-				PokemonListView()
+			if isPageChanging(){
+				if isUserAuthenticated {
+					PokemonListView()
+						.transition(.opacity)
+				} else{
+					LoginView(isConnected: $isUserAuthenticated)
 					.transition(.opacity)
-			} else if isShowingLoginPage {
-				VStack {
-					LoginView()
-					
 				}
-				.transition(.opacity)
 			} else {
 				SplashView(isShowingLoginPage: $isShowingLoginPage)
 				.transition(.opacity)
-					
 			}
 		}
-		.animation(.easeInOut(duration: 0.5), value: isUserAuthenticated || isShowingLoginPage)
+		.animation(.easeInOut(duration: 0.5), value: isPageChanging())
 	}
 }
 
 #Preview {
     RootView()
+		.environment(\.locale, .init(identifier: "fr")) // French locale
 }

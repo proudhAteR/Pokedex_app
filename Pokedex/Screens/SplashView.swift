@@ -6,17 +6,16 @@ struct SplashView: View {
     //  - https://developer.apple.com/documentation/dispatch/dispatchqueue/2300020-asyncafter
 	
 	@Binding var isShowingLoginPage : Bool
-
 		var body: some View {
 			VStack {
-				Image(.logo) // Use your asset name here
+				Image(.logo)
 					.resizable()
-					.scaledToFill() // Ensures the image scales proportionally
+					.scaledToFill()
 			}
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(
-				Color.red
-					.ignoresSafeArea() // Full-screen red background
+				Color.accentColor
+					.ignoresSafeArea()
 			)
 			.onAppear {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

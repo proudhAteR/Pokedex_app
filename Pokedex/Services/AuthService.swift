@@ -12,4 +12,11 @@ class AuthService {
             return []
         }
     }
+	
+	func connect(username : String, password : String) async throws-> Bool {
+		if try await authClient.connect(username: username, password:password){
+			return true
+		}
+		return false
+	}
 }

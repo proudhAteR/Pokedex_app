@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		66DF9E582CF3ADC00064EA8D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 66DF9E572CF3ADC00064EA8D /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		66DF9E572CF3ADC00064EA8D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8C1ED3CF2CF006CC009E93C2 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		8C1ED3C62CF006CC009E93C2 = {
 			isa = PBXGroup;
 			children = (
+				66DF9E572CF3ADC00064EA8D /* Localizable.xcstrings */,
 				8C1ED3D12CF006CC009E93C2 /* Pokedex */,
 				8C1ED3D02CF006CC009E93C2 /* Products */,
 			);
@@ -91,6 +97,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 8C1ED3C62CF006CC009E93C2;
 			minimizedProjectReferenceProxies = 1;
@@ -109,6 +116,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66DF9E582CF3ADC00064EA8D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

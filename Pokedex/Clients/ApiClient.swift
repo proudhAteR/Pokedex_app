@@ -31,26 +31,31 @@ class ApiClient {
         return try decode(data: data)
     }
     
-    // T est le type retourné, R est le type représentant la requête
-    func post<T: Decodable, R: Encodable>(apiUrl: String, body: R) async throws -> T {
-        guard let url = URL(string: apiUrl) else {
-            throw ApiError.invalidURL
-        }
-        
-        // Il faut indiquer la méthode HTTP utilisée et le format des données passées dans le HTTP Body
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // On prend l'objet en mémoire et on l'encode pour retourner la chaîne de caractères représentant le JSON
-        // AuthRequest(username: "jrioux", password: "bad") ---> { "username": "jrioux", "password": "bad" }
-        request.httpBody = try encode(body: body)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        try validate(response: response)
-        
-        return try decode(data: data)
-    }
+	func post<T: Decodable, R: Encodable>(apiUrl: String, body: R, defaultResponse: T) async throws -> T {
+		guard let url = URL(string: apiUrl) else {
+			throw ApiError.invalidURL
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		// Encode the request body
+		request.httpBody = try encode(body: body)
+		
+		let (data, response) = try await URLSession.shared.data(for: request)
+		
+		try validate(response: response)
+		
+		// If the response is empty, return a default value instead
+		if data.isEmpty {
+			return defaultResponse
+		}
+		
+		// Decode the response data
+		return try decode(data: data)
+	}
+
     
     
     
