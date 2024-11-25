@@ -60,7 +60,7 @@ action: {
 					}
 				}
 			}) {
-				Text("Login")
+				Text("Log in")
 					.frame(maxWidth: .infinity, minHeight: 50)
 					.foregroundColor(.white)
 					.background(Color.accentColor)

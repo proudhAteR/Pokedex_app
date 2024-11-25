@@ -22,8 +22,14 @@
       }
     },
     "bug" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bug"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33,8 +39,14 @@
       }
     },
     "dark" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dark"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -44,8 +56,14 @@
       }
     },
     "dragon" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dragon"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55,8 +73,14 @@
       }
     },
     "electric" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "electric"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +91,12 @@
     },
     "Error" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -110,8 +140,14 @@
       }
     },
     "fairy" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fairy"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -121,8 +157,14 @@
       }
     },
     "fighting" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fighting"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -132,8 +174,14 @@
       }
     },
     "fire" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fire"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -143,8 +191,14 @@
       }
     },
     "flying" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "flying"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -154,8 +208,14 @@
       }
     },
     "ghost" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ghost"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -165,8 +225,14 @@
       }
     },
     "grass" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "grass"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -176,8 +242,14 @@
       }
     },
     "ground" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ground"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -187,8 +259,14 @@
       }
     },
     "ice" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ice"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,8 +275,18 @@
         }
       }
     },
+    "Log in" : {
+
+    },
     "Login" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -228,8 +316,14 @@
 
     },
     "normal" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "normal"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,6 +334,12 @@
     },
     "OK" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +367,12 @@
     },
     "Please check your credentials or network connection." : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please check your credentials or network connection."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -276,8 +382,14 @@
       }
     },
     "poison" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "poison"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -287,7 +399,7 @@
       }
     },
     "Pokédex" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -298,8 +410,14 @@
       }
     },
     "psychic" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "psychic"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -308,9 +426,26 @@
         }
       }
     },
-    "rock" : {
-      "extractionState" : "stale",
+    "research_placeholder" : {
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What Pokemon are you looking for?"
+          }
+        }
+      }
+    },
+    "rock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rock"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -319,9 +454,18 @@
         }
       }
     },
+    "search_placeholder" : {
+
+    },
     "steel" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "steel"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,8 +495,14 @@
       }
     },
     "water" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "water"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",

@@ -3,12 +3,20 @@ import SwiftUI
 // PokemonListView: Display a list of Pokemons from API
 struct PokemonListView: View {
 	private let service = PokedexService()
+	@State private var allPokemons: [Pokemon] = [] // Stores all Pokémon fetched from the API
 	@State private var pokemons: [Pokemon] = []
-	
+	@State private var query : String = ""
 	var body: some View {
+		
 		NavigationView {
-			VStack {
+			VStack(spacing: 16)  {
 				ScrollView {
+					PokemonSearchBar(
+						query: $query,
+						pokemons: $pokemons,
+						allPokemons: $allPokemons
+					)
+						.padding(.top, 16)
 					LazyVStack(spacing: 8) {
 						ForEach(pokemons) { pokemon in
 							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
@@ -19,15 +27,14 @@ struct PokemonListView: View {
 								.background(
 									LinearGradient(
 										gradient: Gradient(colors: [
-											PokemonType(rawValue: pokemon.types.first!)!.color.opacity(0.45),
-											PokemonType(rawValue: pokemon.types.first!)!.color.opacity(0.75)
+											PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.45),
+											PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.75)
 										]),
 										startPoint: .top,
 										endPoint: .bottom
 									)
 								)
 								.cornerRadius(20)
-								.padding(.horizontal, 16)
 								.padding(.vertical, 10)
 							}
 						}
@@ -35,16 +42,21 @@ struct PokemonListView: View {
 					.padding(.top, 16)
 				}
 			}
-			.navigationTitle(Text("app_name")) // Navigation title
+			.padding(.horizontal, 12)
+			.navigationTitle(LocalizedStringKey("app_name"))
 		}
 
 
 
-			.onAppear {
-				Task {
-					pokemons = await service.fetchPokemon()
+
+		.onAppear {
+			Task {
+				if allPokemons.isEmpty {
+					allPokemons = await service.fetchPokemon()
+					pokemons = allPokemons
 				}
 			}
+		}
 			
 		}
 	}
@@ -61,6 +73,56 @@ struct TypeAsString: View {
 			.font(.caption)
 	}
 }
+struct PokemonSearchBar: View {
+	@Binding var query: String
+	@Binding var pokemons: [Pokemon]
+	@Binding var allPokemons: [Pokemon]
+	var service = PokedexService()
+
+	private func makeSearch() {
+		Task {
+			if query.isEmpty {
+				pokemons = allPokemons
+			} else {
+				pokemons = service.search(pokemons: allPokemons, query: query)
+			}
+		}
+	}
+
+	var body: some View {
+		HStack(spacing: 12) {
+			Button(action: {
+				makeSearch()
+			}) {
+				Image(systemName: "magnifyingglass")
+					.foregroundColor(.primary)
+			}
+
+			TextField(LocalizedStringKey("search_placeholder"), text: $query)
+				.textInputAutocapitalization(.none)
+				.foregroundColor(.primary)
+				.padding(.vertical, 10)
+				.padding(.horizontal, 5)
+				.onSubmit {
+					makeSearch()
+				}
+
+			Button(action: {
+				print("QR Code tapped")
+			}) {
+				Image(systemName: "qrcode.viewfinder")
+					.foregroundColor(.primary)
+			}
+		}
+		.padding(.horizontal, 16)
+		.padding(.vertical, 10)
+		.background(Color(.systemGray6))
+		.cornerRadius(16)
+		.shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+	}
+}
+
+
 
 struct TypeView: View {
 	var type: String

@@ -25,5 +25,11 @@ class PokedexService{
 	func localizedType(for type: String) -> String {
 		return NSLocalizedString(type, comment: "Localized Pokemon type")
 	}
+	
+	func search(pokemons : [Pokemon], query : String)-> [Pokemon]{
+		return pokemons.filter { pokemon in
+			   pokemon.name.localizedCaseInsensitiveContains(query)
+		   }
+	}
 
 }
