@@ -54,7 +54,6 @@ action: {
 							username: username.lowercased(),
 							password: password
 						)
-					print(isConnected)
 					
 					if !isConnected{
 						showErrorAlert = true

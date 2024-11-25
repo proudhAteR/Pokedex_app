@@ -9,13 +9,8 @@ import Foundation
 //
 // NOTE: Il est également possible de mettre les différentes paramètres dans QuickType pour générer le tout comme il faut.
 //
-struct PokemonListing {
+struct PokemonListing : Decodable{
     let results: [Pokemon]
 }
 
-struct Pokemon {
-    let id: Int
-    let name: String
-    let isFavorite: Bool
-    let types: [String]
-}
+

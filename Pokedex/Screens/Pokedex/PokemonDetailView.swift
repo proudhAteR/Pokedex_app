@@ -14,11 +14,21 @@ import SwiftUI
 // .clipShape() peut permettre de faire des shapes avec des coins arrondis, etc.
 //
 struct PokemonDetailView: View {
-    var body: some View {
-        Text("Écran pour le détail d'un Pokémon")
-    }
+	var pokemon: Pokemon
+	
+	var body: some View {
+		VStack {
+			Text(pokemon.name)
+				.font(.largeTitle)
+				.fontWeight(.bold)
+			// You can add more details here, like stats or description
+			Text("Type: \(pokemon.types.joined(separator: ", "))")
+				.font(.title2)
+			// Add more detailed information about the Pokémon here
+		}
+		.navigationTitle(pokemon.name)
+		.padding()
+	}
 }
 
-#Preview {
-    PokemonDetailView()
-}
+

@@ -1,47 +1,76 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "/" : {
+    "#%@" : {
 
     },
-    "%@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
-    },
-    "Écran de la liste de Pokémon" : {
+    "app_name" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pokemon list screen"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Écran de la liste de Pokémon"
-          }
-        }
-      }
-    },
-    "Écran pour le détail d'un Pokémon" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pokemon details screen"
+            "value" : "Pokedex"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Écran pour le détail d'un Pokémon"
+            "value" : "Pokédex"
+          }
+        }
+      }
+    },
+    "bug" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insecte"
+          }
+        }
+      }
+    },
+    "dark" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ténèbres"
+          }
+        }
+      }
+    },
+    "dragon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dragon"
+          }
+        }
+      }
+    },
+    "electric" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Électrique"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur"
           }
         }
       }
@@ -80,6 +109,104 @@
         }
       }
     },
+    "fairy" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fée"
+          }
+        }
+      }
+    },
+    "fighting" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combat"
+          }
+        }
+      }
+    },
+    "fire" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feu"
+          }
+        }
+      }
+    },
+    "flying" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vol"
+          }
+        }
+      }
+    },
+    "ghost" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spectre"
+          }
+        }
+      }
+    },
+    "grass" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plante"
+          }
+        }
+      }
+    },
+    "ground" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sol"
+          }
+        }
+      }
+    },
+    "ice" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glace"
+          }
+        }
+      }
+    },
+    "Login" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion"
+          }
+        }
+      }
+    },
     "login_button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -100,6 +227,27 @@
     "MyTypeKey.(type)" : {
 
     },
+    "normal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "password_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -117,6 +265,74 @@
         }
       }
     },
+    "Please check your credentials or network connection." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifier les informations saisies ou votre connexion internet."
+          }
+        }
+      }
+    },
+    "poison" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poison"
+          }
+        }
+      }
+    },
+    "Pokédex" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pok"
+          }
+        }
+      }
+    },
+    "psychic" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Psy"
+          }
+        }
+      }
+    },
+    "rock" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roche"
+          }
+        }
+      }
+    },
+    "steel" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acier"
+          }
+        }
+      }
+    },
+    "Type: %@" : {
+
+    },
     "username_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -130,6 +346,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom d’utilsateur"
+          }
+        }
+      }
+    },
+    "water" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eau"
           }
         }
       }
