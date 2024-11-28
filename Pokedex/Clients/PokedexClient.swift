@@ -3,15 +3,19 @@ import Foundation
 import SwiftUI
 
 class PokedexClient{
-	@Environment(\.locale) var locale
-	private let base_url = "https://mapi.cegeplabs.qc.ca/pokedex/v2/pokemons?"
-	
+	private let base_url = "https://mapi.cegeplabs.qc.ca/pokedex/v2/pokemons"
+	let languageCode = Locale.current.language.languageCode?.identifier ?? "fr"
+
 	func getPokemons() async throws -> [Pokemon] {
-		let languageCode = Locale.current.language.languageCode?.identifier ?? "fr"
-		let url = "\(base_url)limit=151&lang=\(languageCode)"
+		let url = "\(base_url)?limit=151&lang=\(languageCode)"
 		let listing: PokemonListing = try await ApiClient.shared.get(apiUrl: url)
-		
 		return listing.results
+	}
+	
+	func getDetails (id : Int) async throws -> Details{
+		let url = "\(base_url)/\(id)?lang=\(languageCode)"
+		
+		return try await ApiClient.shared.get(apiUrl: url)
 	}
 
 	func getImage(url : String) ->  some View{
@@ -25,10 +29,12 @@ class PokedexClient{
 						.resizable()
 						.scaledToFit()
 				case .failure:
-					ProgressView()
+					Image(.pokeball)
+						.resizable()
 						.scaledToFit()
 				@unknown default:
-					ProgressView()
+					Image(.pokeball)
+						.resizable()
 						.scaledToFit()
 			}
 		}

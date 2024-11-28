@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Pokemon: Codable, Identifiable {
+struct Pokemon: Decodable, Identifiable {
 	let id: Int
 	let name: String
 	let isFavorite: Bool
@@ -13,4 +13,8 @@ struct Pokemon: Codable, Identifiable {
 		case types
 	}
 }
+
+
+
+
 

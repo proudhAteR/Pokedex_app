@@ -13,22 +13,56 @@ import SwiftUI
 //
 // .clipShape() peut permettre de faire des shapes avec des coins arrondis, etc.
 //
+
 struct PokemonDetailView: View {
+	@ObservedObject var viewModel = PokemonDetailViewModel()
+	@State var selection: Menu = .About
 	var pokemon: Pokemon
-	
+	@State var details : Details? = nil
 	var body: some View {
+	
 		VStack {
-			Text(pokemon.name)
-				.font(.largeTitle)
-				.fontWeight(.bold)
-			// You can add more details here, like stats or description
-			Text("Type: \(pokemon.types.joined(separator: ", "))")
-				.font(.title2)
-			// Add more detailed information about the Pokémon here
+			PokemonPosterView(pokemon: pokemon, selection: $selection)
+			TabView(selection: $selection){
+				AboutView(details: $details, pokemon: pokemon)
+					.tag(Menu.About)
+				Text("B")
+					.tag(Menu.Stats)
+				Text("C")
+					.tag(Menu.Upgrades)
+			}
+
+			Spacer()
+
 		}
-		.navigationTitle(pokemon.name)
-		.padding()
+		.ignoresSafeArea()
+		.onAppear{
+			Task{
+				details = await viewModel.getDetails(id: pokemon.id)
+			}
+		}
+
 	}
 }
 
 
+
+#Preview {
+	@Previewable let pokemon = Pokemon(id: 25, name: "Pikachu", isFavorite: true, types: ["electric"])
+	PokemonDetailView(pokemon: pokemon)
+}
+
+
+
+struct MenuPickerView: View {
+	@Binding var selection : Menu
+	var body: some View {
+		Picker("Menu", selection: $selection){
+			ForEach(Menu.allCases){ menu in
+				Text("\(menu)".capitalized)
+					.tag(menu)
+			}
+		}
+		.pickerStyle(.segmented)
+	}
+}

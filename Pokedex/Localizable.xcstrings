@@ -4,6 +4,12 @@
     "#%@" : {
 
     },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
     "app_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -21,6 +27,9 @@
         }
       }
     },
+    "B" : {
+
+    },
     "bug" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -37,6 +46,9 @@
           }
         }
       }
+    },
+    "C" : {
+
     },
     "dark" : {
       "extractionState" : "manual",
@@ -258,6 +270,26 @@
         }
       }
     },
+    "Height" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Height"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
+
+    },
     "ice" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -276,21 +308,11 @@
       }
     },
     "Log in" : {
-
-    },
-    "Login" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Login"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Connexion"
+            "value" : "Log in"
           }
         }
       }
@@ -311,6 +333,9 @@
           }
         }
       }
+    },
+    "Menu" : {
+
     },
     "MyTypeKey.(type)" : {
 
@@ -401,10 +426,33 @@
     "Pokédex" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Pokedex"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Pok"
+          }
+        }
+      }
+    },
+    "pokedex_datas_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokedex’s data"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Données du Pokédex"
           }
         }
       }
@@ -434,6 +482,12 @@
             "state" : "translated",
             "value" : "What Pokemon are you looking for?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel Pokémon recherchez-vous ?"
+          }
         }
       }
     },
@@ -455,7 +509,37 @@
       }
     },
     "search_placeholder" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which Pokemon are you looking for ?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel Pokémon recherchez-vous ?"
+          }
+        }
+      }
+    },
+    "Species" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Species"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espèces"
+          }
+        }
+      }
     },
     "steel" : {
       "extractionState" : "manual",
@@ -473,9 +557,6 @@
           }
         }
       }
-    },
-    "Type: %@" : {
-
     },
     "username_placeholder" : {
       "extractionState" : "manual",
@@ -507,6 +588,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eau"
+          }
+        }
+      }
+    },
+    "Weaknesses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weaknesses"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faiblesses"
+          }
+        }
+      }
+    },
+    "Weight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poids"
           }
         }
       }

@@ -8,9 +8,10 @@ class PokedexService{
 	func fetchPokemon()async ->[Pokemon]{
 		do {
 			let pokemons: [Pokemon] = try await client.getPokemons()
+			
 			return pokemons
 		} catch {
-			print("Don't forget to handle errors correctly: \(error)")
+			print("Banana: \(error)")
 			return []
 		}
 	}
@@ -28,8 +29,19 @@ class PokedexService{
 	
 	func search(pokemons : [Pokemon], query : String)-> [Pokemon]{
 		return pokemons.filter { pokemon in
-			   pokemon.name.localizedCaseInsensitiveContains(query)
-		   }
+			pokemon.name.localizedCaseInsensitiveContains(query)
+		}
+	}
+	
+	func fetchDetails(id: Int) async -> Details? {
+		do {
+			let details = try await client.getDetails(id: id)
+			return details
+		} catch {
+			print("Error fetching details: \(error)")
+			return nil 
+		}
 	}
 
+	
 }
