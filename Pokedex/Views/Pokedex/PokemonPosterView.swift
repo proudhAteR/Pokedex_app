@@ -14,17 +14,16 @@ struct PokemonPosterView: View {
 	var body: some View {
 		VStack() {
 			Spacer()
-			HStack(spacing: 48){
+			HStack(spacing: 24){
 			PokedexService().getImage(id: pokemon.id)
 					.scaledToFit()
-					.frame(width: 136)
+					.frame(width: 140)
 				InfosView(pokemon: pokemon, detail:true)
 			}
 			.padding(.leading)
 			.padding(.bottom, 36)
 			MenuPickerView(selection: $selection)
 		}
-			.frame(height: 420)
 			.ignoresSafeArea()
 			.background(
 				LinearGradient(
@@ -51,13 +50,13 @@ struct HoveringTextView: View {
 	var body: some View {
 		GeometryReader { geometry in
 			Text("\(name)")
-				.font(.system(size: 100, weight: .bold))
-				.foregroundColor(Color.white.opacity(0.175))
+				.font(.system(size: 120, weight: .bold))
+				.foregroundColor(Color.white.opacity(0.150))
 				.minimumScaleFactor(0.1)
 				.lineLimit(1)
 				.frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
 		}
-		.offset(x: 8, y: -52)
+		.offset(x: 4, y: -96)
 		.padding()
 	}
 }

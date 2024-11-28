@@ -20,27 +20,27 @@ struct PokemonDetailView: View {
 	var pokemon: Pokemon
 	@State var details : Details? = nil
 	var body: some View {
-	
-		VStack {
-			PokemonPosterView(pokemon: pokemon, selection: $selection)
-			TabView(selection: $selection){
-				AboutView(details: $details, pokemon: pokemon)
-					.tag(Menu.About)
-				Text("B")
-					.tag(Menu.Stats)
-				Text("C")
-					.tag(Menu.Upgrades)
-			}
+		GeometryReader{geo in
+			VStack{
+				PokemonPosterView(pokemon: pokemon, selection: $selection)
+					.frame(height: geo.size.height * 0.4)
+				TabView(selection: $selection){
+					AboutView(details: $details, pokemon: pokemon)
+						.tag(Menu.About)
+					Text("B")
+						.tag(Menu.Stats)
+					Text("C")
+						.tag(Menu.Upgrades)
+				}
 
-			Spacer()
-
-		}
-		.ignoresSafeArea()
-		.onAppear{
-			Task{
-				details = await viewModel.getDetails(id: pokemon.id)
+			}
+			.onAppear{
+				Task{
+					details = await viewModel.getDetails(id: pokemon.id)
+				}
 			}
 		}
+		
 
 	}
 }
@@ -59,7 +59,7 @@ struct MenuPickerView: View {
 	var body: some View {
 		Picker("Menu", selection: $selection){
 			ForEach(Menu.allCases){ menu in
-				Text("\(menu)".capitalized)
+				Text("\(PokedexService().localizedMenu(for: menu))".capitalized)
 					.tag(menu)
 			}
 		}

@@ -50,8 +50,6 @@ struct PokemonListView: View {
 						}
 					}
 					.padding(.top, 16)
-					.frame(width: .infinity)
-					.ignoresSafeArea(.all)
 				}
 			}
 			.padding(.horizontal, 12)

@@ -2,7 +2,7 @@ import Foundation
 
 // NOTE: Un ViewModel peut simplifier le code
 class PokemonListViewModel: ObservableObject {
-	@Published var pokemons : [Pokemon] = [];
+	private var pokemons : [Pokemon] = [];
 	private let service = PokedexService()
 
 	

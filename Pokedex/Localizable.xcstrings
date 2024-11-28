@@ -10,6 +10,23 @@
     "%lld" : {
 
     },
+    "About" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
+          }
+        }
+      }
+    },
     "app_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -287,9 +304,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "ice" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -303,16 +317,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Glace"
-          }
-        }
-      }
-    },
-    "Log in" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log in"
           }
         }
       }
@@ -335,7 +339,14 @@
       }
     },
     "Menu" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        }
+      }
     },
     "MyTypeKey.(type)" : {
 
@@ -438,7 +449,8 @@
             "value" : "Pok"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "pokedex_datas_title" : {
       "extractionState" : "manual",
@@ -541,6 +553,23 @@
         }
       }
     },
+    "Stats" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stats"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statisques"
+          }
+        }
+      }
+    },
     "steel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -554,6 +583,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acier"
+          }
+        }
+      }
+    },
+    "Upgrades" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrades"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Évolution"
           }
         }
       }
