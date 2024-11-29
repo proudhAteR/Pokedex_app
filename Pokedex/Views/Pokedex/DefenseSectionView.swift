@@ -11,22 +11,16 @@ struct DefenseSectionView: View {
 	@Binding var details: Details?
 	let pokemon: Pokemon
     var body: some View {
-		VStack(alignment: .leading, spacing: 16) {
-			TitleSectionView(
-				color: PokemonType(rawValue: pokemon.types.first ?? "normal")?.color ?? .gray,
-				text: "defense_type_title"
+		TitleSectionView(
+			color: PokemonType(rawValue: pokemon.types.first ?? "normal")?.color ?? .gray,
+			title: "defense_type_title", subtitle: String(
+				format: "Each type efficiancy on %@",
+				pokemon.name.capitalized
 			)
-			Text(
-				String(
-					format: "Each type efficiancy on %@",
-					pokemon.name.capitalized
-				)
-			)
-			.foregroundStyle(.secondary)
-			.font(.body)
-			DefensesGrid(defenses: details?.defenses)
-		}
-    }
+		)
+		
+		DefensesGrid(defenses: details?.defenses)
+	}
 }
 
 struct DefensesGrid: View {

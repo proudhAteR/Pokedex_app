@@ -9,14 +9,22 @@ import SwiftUI
 
 struct TitleSectionView : View {
 	let color : Color
-	let text : String
+	let title : String
+	var subtitle : String = ""
 	var body : some View{
-		Text(NSLocalizedString(text, comment: "section title"))
-			.font(.headline)
-			.foregroundColor(
-				color
-			)
-			.padding(.bottom, 8)
+		VStack(alignment: .leading, spacing: 8){
+			Text(NSLocalizedString(title, comment: "section title"))
+				.font(.headline)
+				.foregroundColor(
+					color
+				)
+			if !subtitle.isEmpty{
+				Text(NSLocalizedString(subtitle, comment: "section subtitle"))
+					.font(.body)
+					.foregroundStyle(.secondary)
+			}
+		}
+		.padding(.bottom, 4)
 	}
 }
 

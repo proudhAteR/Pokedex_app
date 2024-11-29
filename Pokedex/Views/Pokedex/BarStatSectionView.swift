@@ -15,7 +15,7 @@ struct BarStatSectionView: View {
 			color: PokemonType(
 				rawValue: pokemon.types.first ??  "normal"
 			)!.color,
-			text:"base_stat_title"
+			title:"base_stat_title"
 		)
 		StatGridView(pokemon: pokemon, details: $details)
 		

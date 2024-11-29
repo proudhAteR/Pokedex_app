@@ -15,7 +15,6 @@ struct AboutView: View {
 		VStack(alignment:.leading, spacing: 20) {
 			DescriptionView(description: details?.description ?? "Loading description...")
 			DataGridView(details: $details, pokemon: pokemon)
-			
 			Spacer()
 		}
 		.padding()

@@ -16,7 +16,7 @@ struct DataGridView: View {
 				color: PokemonType(
 					rawValue: pokemon.types.first ??  "normal"
 				)!.color,
-				text:"pokedex_datas_title"
+				title:"pokedex_datas_title"
 			)
 			DataGrid(details: $details)
 		}
