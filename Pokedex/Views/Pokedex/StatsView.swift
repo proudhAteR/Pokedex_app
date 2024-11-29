@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct StatsView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+	@Binding var details: Details?
+	let pokemon: Pokemon
+	var body: some View {
+
+		ScrollView{
+			VStack(alignment: .leading, spacing: 12) {
+				BarStatSectionView(pokemon: pokemon, details: $details)
+					.padding(.bottom, 16)
+				DefenseSectionView(details: $details, pokemon: pokemon)
+			}
+			.padding()
+		}
+	}
+		 
+	 private var pokemonPrimaryTypeColor: Color {
+		 PokemonType(rawValue: pokemon.types.first ?? "normal")?.color ?? .gray
+	 }
 }
 
-#Preview {
-    StatsView()
-}
+
+

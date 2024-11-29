@@ -27,7 +27,7 @@ struct PokemonDetailView: View {
 				TabView(selection: $selection){
 					AboutView(details: $details, pokemon: pokemon)
 						.tag(Menu.About)
-					Text("B")
+					StatsView(details: $details, pokemon: pokemon)
 						.tag(Menu.Stats)
 					Text("C")
 						.tag(Menu.Upgrades)
@@ -36,7 +36,9 @@ struct PokemonDetailView: View {
 			}
 			.onAppear{
 				Task{
-					details = await viewModel.getDetails(id: pokemon.id)
+					if details == nil{
+						details = await viewModel.getDetails(id: pokemon.id)
+					}
 				}
 			}
 		}

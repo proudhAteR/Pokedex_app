@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct TitleSectionView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct TitleSectionView : View {
+	let color : Color
+	let text : String
+	var body : some View{
+		Text(NSLocalizedString(text, comment: "section title"))
+			.font(.headline)
+			.foregroundColor(
+				color
+			)
+			.padding(.bottom, 8)
+	}
 }
 
-#Preview {
-    TitleSectionView()
-}

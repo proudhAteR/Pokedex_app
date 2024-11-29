@@ -46,19 +46,19 @@ struct ButtonView: View {
 	var body: some View {
 		VStack {
 			Button(
-action: {
-				Task {
-					
-					isConnected = try await authService
-						.connect(
-							username: username.lowercased(),
-							password: password
-						)
-					
-					if !isConnected{
-						showErrorAlert = true
+				action: {
+					Task {
+						
+						isConnected = try await authService
+							.connect(
+								username: username.lowercased(),
+								password: password
+							)
+						
+						if !isConnected{
+							showErrorAlert = true
+						}
 					}
-				}
 			}) {
 				Text("login_button")
 					.frame(maxWidth: .infinity, minHeight: 50)
@@ -68,7 +68,7 @@ action: {
 					.padding(.horizontal, 20)
 					.bold()
 			}
-			.padding(.top, 120)
+			.padding(.top, 84)
 		}
 		.alert(isPresented: $showErrorAlert) {
 			Alert(
@@ -82,18 +82,28 @@ action: {
 }
 
 struct InputsView: View {
-	@Binding var username : String
-	@Binding var password : String
-	var body: some View{
-		TextField("username_placeholder", text: $username)
-			.padding()
+	@Binding var username: String
+	@Binding var password: String
+	
+	var body: some View {
+		VStack(spacing: 24) {
+			TextField("username_placeholder", text: $username)
+				.textFieldStyle()
+
+			SecureField("password_placeholder", text: $password)
+				.textFieldStyle()
+
+		}
+	}
+}
+extension View {
+	func textFieldStyle() -> some View {
+		self
+			.padding(.horizontal, 20)
+			.frame(maxWidth: .infinity, minHeight: 50)
 			.background(Color(.systemGray6))
 			.cornerRadius(12)
-		
-		SecureField("password_placeholder", text: $password)
-			.padding()
-			.background(Color(.systemGray6))
-			.cornerRadius(12)
+			
 	}
 }
 

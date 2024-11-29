@@ -44,8 +44,22 @@
         }
       }
     },
-    "B" : {
-
+    "base_stat_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base Stats"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stats de base"
+          }
+        }
+      }
     },
     "bug" : {
       "extractionState" : "manual",
@@ -80,6 +94,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ténèbres"
+          }
+        }
+      }
+    },
+    "defense_type_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type’s defense"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Défense de type"
           }
         }
       }
@@ -349,6 +380,9 @@
       }
     },
     "MyTypeKey.(type)" : {
+
+    },
+    "No defenses available" : {
 
     },
     "normal" : {

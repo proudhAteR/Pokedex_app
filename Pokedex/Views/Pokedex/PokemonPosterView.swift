@@ -1,9 +1,4 @@
-//
-//  PokemonPosterView.swift
-//  Pokedex
-//
-//  Created by Christian Boleku on 2024-11-25.
-//
+
 
 import SwiftUI
 

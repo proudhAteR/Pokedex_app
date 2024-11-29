@@ -9,7 +9,7 @@ import Foundation
 import SwiftUICore
 import DeveloperToolsSupport
 
-enum PokemonType: String {
+enum PokemonType: String, CaseIterable {
 	case fire, water, grass, electric, flying, fighting
 	case ghost, bug, dark, dragon, fairy, ground
 	case ice, normal, poison, psychic, rock, steel

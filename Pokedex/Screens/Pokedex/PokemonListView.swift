@@ -27,25 +27,7 @@ struct PokemonListView: View {
 					LazyVStack(spacing: 8) {
 						ForEach(pokemons) { pokemon in
 							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
-								HStack {
-									PokemonRowView(pokemon: pokemon)
-										.padding()
-										
-								}
-								.background(
-									LinearGradient(
-										gradient: Gradient(colors: [
-											PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.45),
-											PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.75)
-										]),
-										startPoint: .top,
-										endPoint: .bottom
-									)
-								)
-								.cornerRadius(20)
-								.padding(.vertical, 10)
-								.shadow(color: PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.5), radius: 4, y: 8)
-								
+								PokemonView(pokemon: pokemon)
 							}
 						}
 					}
@@ -68,19 +50,5 @@ struct PokemonListView: View {
 
 #Preview {
 	PokemonListView()
-}
-
-
-struct PokemonRowView: View {
-	var pokemon: Pokemon
-	var body: some View {
-		HStack(spacing: 8) {
-			InfosView(pokemon: pokemon)
-			Spacer()
-			PokedexService().getImage(id: pokemon.id)
-				.frame(width: 132)
-		
-		}
-	}
 }
 

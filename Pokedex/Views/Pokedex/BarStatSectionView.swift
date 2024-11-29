@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct BarStatSectionView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    BarStatSectionView()
+	var pokemon : Pokemon
+	@Binding var details : Details?
+	var body: some View {
+		TitleSectionView(
+			color: PokemonType(
+				rawValue: pokemon.types.first ??  "normal"
+			)!.color,
+			text:"base_stat_title"
+		)
+		StatGridView(pokemon: pokemon, details: $details)
+		
+	}
 }
