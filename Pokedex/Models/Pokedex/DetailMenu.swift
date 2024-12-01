@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Menu : String, Identifiable, CaseIterable{
+enum DetailMenu : String, Identifiable, CaseIterable{
 	case About, Stats,Upgrades
 	var id : Self{self}
 }
