@@ -24,6 +24,7 @@ struct PokemonListView: View {
 						allPokemons: $allPokemons
 					)
 						.padding(.top, 16)
+					
 					LazyVStack(spacing: 8) {
 						ForEach(pokemons) { pokemon in
 							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {

@@ -17,6 +17,7 @@ class PokedexClient{
 		
 		return try await ApiClient.shared.get(apiUrl: url)
 	}
+	
 
 	func getImage(url : String) ->  some View{
 		return AsyncImage(url: URL(string: url)) { phase in

@@ -1,10 +1,3 @@
-//
-//  PokemonSearchBar.swift
-//  Pokedex
-//
-//  Created by Christian Boleku on 2024-11-25.
-//
-
 import SwiftUI
 
 struct PokemonSearchBar: View {
@@ -12,7 +5,7 @@ struct PokemonSearchBar: View {
 	@Binding var query: String
 	@Binding var pokemons: [Pokemon]
 	@Binding var allPokemons: [Pokemon]
-
+	@State var isPresented = false
 	private func makeSearch() {
 		Task {
 			pokemons = await viewModel.handleSearch(query: query)
@@ -38,11 +31,16 @@ struct PokemonSearchBar: View {
 				}
 
 			Button(action: {
-				print("QR Code tapped")
+				isPresented = true
 			}) {
 				Image(systemName: "qrcode.viewfinder")
 					.foregroundColor(.primary)
 			}
+			.sheet(isPresented: $isPresented){
+				ScannerViewRepresentable(scanningRes: $query)
+			}.onDisappear(perform: {
+				print($query)
+			})
 		}
 		.padding(.horizontal, 16)
 		.padding(.vertical, 10)
