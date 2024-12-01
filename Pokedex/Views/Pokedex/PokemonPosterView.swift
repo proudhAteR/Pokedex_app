@@ -4,7 +4,7 @@ import SwiftUI
 
 struct PokemonPosterView: View {
 	var pokemon: Pokemon
-	@Binding var selection: Menu
+	@Binding var selection: DetailMenu
 
 	var body: some View {
 		VStack() {

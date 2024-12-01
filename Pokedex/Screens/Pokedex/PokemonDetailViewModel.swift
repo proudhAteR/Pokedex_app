@@ -10,7 +10,7 @@ class PokemonDetailViewModel: ObservableObject {
 		return details!
 	}
 	
-	func localizedMenu(menu : Menu)-> String{
+	func localizedMenu(menu : DetailMenu)-> String{
 		return service.localizedMenu(for: menu)
 	}
 	func formatMultiplier(mult: Double) -> String {

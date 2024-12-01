@@ -29,7 +29,7 @@ struct StatGridView : View {
 				LinearProgressViewStyle(
 								tint: PokemonType(rawValue: pokemon.types.first!)!.color
 							)
-					)
+			)
 	}
 }
 
@@ -44,7 +44,7 @@ struct StatGridRowView: View {
 		Text("\(value)")
 		ProgressView(
 			value: Double(value),
-			total: Double(details?.baseExperience ?? 100)
+			total: Double(details?.baseExperience ?? 500)
 		)
 		.cornerRadius(8)
 	}

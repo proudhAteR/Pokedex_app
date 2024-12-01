@@ -5,8 +5,12 @@ struct PokemonSearchBar: View {
 	@Binding var query: String
 	@Binding var pokemons: [Pokemon]
 	@Binding var allPokemons: [Pokemon]
+	@Binding var favsOnly : Bool
+	@Binding var desc : Bool
 	@State var isPresented = false
 	private func makeSearch() {
+		favsOnly = false
+		desc = false
 		Task {
 			pokemons = await viewModel.handleSearch(query: query)
 		}

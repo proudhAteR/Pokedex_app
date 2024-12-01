@@ -16,7 +16,7 @@ import SwiftUI
 
 struct PokemonDetailView: View {
 	@ObservedObject var viewModel = PokemonDetailViewModel()
-	@State var selection: Menu = .About
+	@State var selection: DetailMenu = .About
 	var pokemon: Pokemon
 	@State var details : Details? = nil
 	var body: some View {
@@ -26,11 +26,11 @@ struct PokemonDetailView: View {
 					.frame(height: geo.size.height * 0.4)
 				TabView(selection: $selection){
 					AboutView(details: $details, pokemon: pokemon)
-						.tag(Menu.About)
+						.tag(DetailMenu.About)
 					StatsView(details: $details, pokemon: pokemon)
-						.tag(Menu.Stats)
+						.tag(DetailMenu.Stats)
 					Text("C")
-						.tag(Menu.Upgrades)
+						.tag(DetailMenu.Upgrades)
 				}
 
 			}
@@ -47,8 +47,6 @@ struct PokemonDetailView: View {
 	}
 }
 
-
-
 #Preview {
 	@Previewable let pokemon = Pokemon(id: 25, name: "Pikachu", isFavorite: true, types: ["electric"])
 	PokemonDetailView(pokemon: pokemon)
@@ -57,10 +55,10 @@ struct PokemonDetailView: View {
 
 
 struct MenuPickerView: View {
-	@Binding var selection : Menu
+	@Binding var selection : DetailMenu
 	var body: some View {
 		Picker("Menu", selection: $selection){
-			ForEach(Menu.allCases){ menu in
+			ForEach(DetailMenu.allCases){ menu in
 				Text("\(PokedexService().localizedMenu(for: menu))".capitalized)
 					.tag(menu)
 			}

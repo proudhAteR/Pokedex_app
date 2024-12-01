@@ -7,7 +7,9 @@ class PokemonListViewModel: ObservableObject {
 
 	
 	func getPokemons() async -> [Pokemon] {
-		pokemons = await service.fetchPokemon()
+		if pokemons.isEmpty{
+			pokemons = await service.fetchPokemon()
+		}
 		return self.pokemons
 	}
 	func handleSearch(query : String) async -> [Pokemon]{
@@ -18,5 +20,18 @@ class PokemonListViewModel: ObservableObject {
 					   .trimmingCharacters(in: .whitespacesAndNewlines)
 			   )
 		return pokemons
+	}
+	
+	func favorites(desc: Bool, favsOnly: Bool, pokemons: [Pokemon]) async -> [Pokemon] {
+		let list = favsOnly ? service.getFavorites(pokemons: pokemons) :
+		await getPokemons()
+		
+		return await sort(desc: desc, pokemons: list)
+	}
+	
+	func sort(desc: Bool, pokemons: [Pokemon]) async -> [Pokemon] {
+			return desc ?
+				service.sortDesc(pokemons: pokemons) :
+				service.sortAsc(pokemons: pokemons)
 	}
 }

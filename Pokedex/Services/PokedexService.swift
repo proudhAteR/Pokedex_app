@@ -27,7 +27,7 @@ class PokedexService{
 		return NSLocalizedString(type, comment: "Localized Pokemon type")
 	}
 	
-	func localizedMenu(for menu: Menu) -> String {
+	func localizedMenu(for menu: DetailMenu) -> String {
 		return NSLocalizedString(menu.rawValue, comment: "Localized Menu")
 	}
 	
@@ -35,6 +35,17 @@ class PokedexService{
 		return pokemons.filter { pokemon in
 			pokemon.name.localizedCaseInsensitiveContains(query)
 		}
+	}
+	func getFavorites(pokemons : [Pokemon])-> [Pokemon]{
+		return pokemons.filter{pokemon in
+			pokemon.isFavorite == true
+		}
+	}
+	func sortDesc(pokemons: [Pokemon]) -> [Pokemon] {
+		return pokemons.sorted { $0.id > $1.id }
+	}
+	func sortAsc(pokemons: [Pokemon]) -> [Pokemon] {
+		return pokemons.sorted { $0.id < $1.id }
 	}
 	
 	func fetchDetails(id: Int) async -> Details? {
