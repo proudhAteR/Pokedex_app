@@ -72,9 +72,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 				failed()
 				return
 			}
-
-
-
 		captureSession.startRunning()
 	}
 

@@ -36,11 +36,10 @@ struct PokemonSearchBar: View {
 				Image(systemName: "qrcode.viewfinder")
 					.foregroundColor(.primary)
 			}
-			.sheet(isPresented: $isPresented){
+			.sheet(isPresented: $isPresented, onDismiss: {
+				makeSearch()}){
 				ScannerViewRepresentable(scanningRes: $query)
-			}.onDisappear(perform: {
-				print($query)
-			})
+			}
 		}
 		.padding(.horizontal, 16)
 		.padding(.vertical, 10)

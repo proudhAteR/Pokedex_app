@@ -371,6 +371,12 @@
     },
     "Menu" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -380,10 +386,39 @@
       }
     },
     "MyTypeKey.(type)" : {
-
+      "shouldTranslate" : false
     },
     "No defenses available" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No defence stat available"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pas de statistique défensive disponible."
+          }
+        }
+      }
+    },
+    "No Pokémon Found" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Pokemon Found"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de Pokemon correspondant"
+          }
+        }
+      }
     },
     "normal" : {
       "extractionState" : "manual",
@@ -668,6 +703,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eau"
+          }
+        }
+      }
+    },
+    "We couldn't find any Pokémon matching your search." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't find any Pokemon matching your search."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous n’avons pas pu trouver le Pokemon que vous recherchez."
           }
         }
       }

@@ -5,26 +5,31 @@ struct PokemonListView: View {
 	@ObservedObject var viewModel = PokemonListViewModel()
 	@State private var allPokemons: [Pokemon] = []
 	@State private var pokemons: [Pokemon] = []
-	@State private var query : String = ""
+	@State private var query: String = ""
+	@State private var showAlert: Bool = false
+
 	private func initView() async {
 		if allPokemons.isEmpty {
 			allPokemons = await viewModel.getPokemons()
 			pokemons = allPokemons
 		}
 	}
-	
+
 	var body: some View {
-		
 		NavigationView {
-			VStack(spacing: 16)  {
+			VStack(spacing: 16) {
 				ScrollView {
 					PokemonSearchBar(
 						query: $query,
 						pokemons: $pokemons,
 						allPokemons: $allPokemons
 					)
-						.padding(.top, 16)
-					
+					.padding(.top, 16)
+					.onChange(of: pokemons) {
+						if pokemons.isEmpty {
+							showAlert = true
+						}
+					}
 					LazyVStack(spacing: 8) {
 						ForEach(pokemons) { pokemon in
 							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
@@ -38,16 +43,23 @@ struct PokemonListView: View {
 			.padding(.horizontal, 12)
 			.navigationTitle(LocalizedStringKey("app_name"))
 		}
-
 		.onAppear {
-			Task{
+			Task {
 				await initView()
 			}
 		}
-			
+		.alert(isPresented: $showAlert) {
+			Alert(
+				title: Text("No Pokémon Found"),
+				message: Text("We couldn't find any Pokémon matching your search."),
+				dismissButton: .default(Text("OK"), action: {
+					query = ""
+					pokemons = allPokemons
+				})
+			)
 		}
 	}
-
+}
 
 #Preview {
 	PokemonListView()
