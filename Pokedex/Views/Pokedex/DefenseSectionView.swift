@@ -9,13 +9,12 @@ import SwiftUI
 
 struct DefenseSectionView: View {
 	@Binding var details: Details?
-	let pokemon: Pokemon
     var body: some View {
 		TitleSectionView(
-			color: PokemonType(rawValue: pokemon.types.first ?? "normal")?.color ?? .gray,
+			color: PokemonType(rawValue: details?.types.first ?? "normal")?.color ?? .gray,
 			title: "defense_type_title", subtitle: String(
 				format: "Each type efficiancy on %@",
-				pokemon.name.capitalized
+				details?.name.capitalized ?? "pokemon"
 			)
 		)
 		

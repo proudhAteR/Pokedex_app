@@ -12,7 +12,8 @@ struct PokemonSearchBar: View {
 		favsOnly = false
 		desc = false
 		Task {
-			pokemons = await viewModel.handleSearch(query: query)
+			pokemons = query.isEmpty ? allPokemons : await viewModel
+				.handleSearch(query: query)
 		}
 	}
 
@@ -30,6 +31,10 @@ struct PokemonSearchBar: View {
 				.foregroundColor(.primary)
 				.padding(.vertical, 10)
 				.padding(.horizontal, 5)
+				.disableAutocorrection(true)
+				.onChange(of: query) {
+					makeSearch()
+				}
 				.onSubmit {
 					makeSearch()
 				}

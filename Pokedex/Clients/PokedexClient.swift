@@ -14,11 +14,14 @@ class PokedexClient{
 	
 	func getDetails (id : Int) async throws -> Details{
 		let url = "\(base_url)/\(id)?lang=\(languageCode)"
-		
 		return try await ApiClient.shared.get(apiUrl: url)
 	}
 	
-
+	func getDetails (name : String) async throws -> Details{
+		let url = "\(base_url)/\(name.lowercased())?lang=\(languageCode)"
+		return try await ApiClient.shared.get(apiUrl: url)
+	}
+	
 	func getImage(url : String) ->  some View{
 		return AsyncImage(url: URL(string: url)) { phase in
 			switch phase {
@@ -30,7 +33,8 @@ class PokedexClient{
 						.resizable()
 						.scaledToFit()
 				case .failure:
-					Image(.pokeball)
+					
+					Image(.electric)
 						.resizable()
 						.scaledToFit()
 				@unknown default:

@@ -2,9 +2,12 @@
 import Foundation
 
 struct Details: Decodable {
+	let id: Int
+	let name: String
+	let isFavorite: Bool
+	let types: [String]
 	let weight, height, baseExperience: Int
 	let description: String
-	let isFavorite: Bool
 	let stats: Stats
 	let abilities: [Ability]
 	let evolutions: [String]
@@ -13,10 +16,12 @@ struct Details: Decodable {
 	let defenses: [Defense]
 	
 	enum CodingKeys: String, CodingKey {
+		case id, name
+		case isFavorite = "is_favorite"
+		case types
 		case weight, height
 		case baseExperience = "base_experience"
 		case description
-		case isFavorite = "is_favorite"
 		case stats
 		case abilities
 		case evolutions

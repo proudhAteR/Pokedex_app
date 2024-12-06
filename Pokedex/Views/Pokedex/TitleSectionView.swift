@@ -24,7 +24,7 @@ struct TitleSectionView : View {
 					.foregroundStyle(.secondary)
 			}
 		}
-		.padding(.bottom, 4)
+		.padding(.bottom, 2)
 	}
 }
 

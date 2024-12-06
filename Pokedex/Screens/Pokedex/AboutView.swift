@@ -9,12 +9,11 @@ import SwiftUI
 
 struct AboutView: View {
 	@Binding var details: Details?
-	let pokemon : Pokemon
 	let columns = [GridItem(.flexible()), GridItem(.flexible())]
 	var body: some View {
 		VStack(alignment:.leading, spacing: 20) {
 			DescriptionView(description: details?.description ?? "Loading description...")
-			DataGridView(details: $details, pokemon: pokemon)
+			DataGridView(details: $details)
 			Spacer()
 		}
 		.padding()

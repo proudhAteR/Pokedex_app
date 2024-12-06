@@ -17,9 +17,9 @@ struct PokemonListView: View {
 	}
 
 	var body: some View {
-		NavigationView {
+		NavigationStack {
+			ScrollView {
 			VStack(spacing: 16) {
-				ScrollView {
 					PokemonSearchBar(
 						query: $query,
 						pokemons: $pokemons,
@@ -38,6 +38,11 @@ struct PokemonListView: View {
 							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
 								PokemonView(pokemon: pokemon).id(pokemon.id)
 							}
+						}
+					}
+					.onAppear {
+						Task {
+							await initView()
 						}
 					}
 					.padding(.top, 16)
@@ -91,11 +96,6 @@ struct PokemonListView: View {
 						Image(systemName: "slider.horizontal.3")
 							.foregroundStyle(.black)
 					}
-				}
-			}
-			.onAppear {
-				Task {
-					await initView()
 				}
 			}
 			.alert(isPresented: $showAlert) {

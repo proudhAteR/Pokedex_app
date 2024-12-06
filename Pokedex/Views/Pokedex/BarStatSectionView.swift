@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct BarStatSectionView: View {
-	var pokemon : Pokemon
 	@Binding var details : Details?
 	var body: some View {
 		TitleSectionView(
 			color: PokemonType(
-				rawValue: pokemon.types.first ??  "normal"
+				rawValue: details?.types.first ??  "normal"
 			)!.color,
 			title:"base_stat_title"
 		)
-		StatGridView(pokemon: pokemon, details: $details)
+		StatGridView(details: $details)
 		
 	}
 }

@@ -9,12 +9,11 @@ import SwiftUI
 
 struct DataGridView: View {
 	@Binding var details: Details?
-	let pokemon : Pokemon
 	var body: some View {
 		VStack(alignment:.leading, spacing: 16) {
 			TitleSectionView(
 				color: PokemonType(
-					rawValue: pokemon.types.first ??  "normal"
+					rawValue: details?.types.first ??  "normal"
 				)!.color,
 				title:"pokedex_datas_title"
 			)

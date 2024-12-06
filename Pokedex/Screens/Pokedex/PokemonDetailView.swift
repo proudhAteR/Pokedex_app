@@ -25,15 +25,17 @@ struct PokemonDetailView: View {
 				PokemonPosterView(pokemon: pokemon, selection: $selection)
 					.frame(height: geo.size.height * 0.4)
 				TabView(selection: $selection){
-					AboutView(details: $details, pokemon: pokemon)
+					AboutView(details: $details)
 						.tag(DetailMenu.About)
-					StatsView(details: $details, pokemon: pokemon)
+					StatsView(details: $details)
 						.tag(DetailMenu.Stats)
-					Text("C")
+					UpgradesView(details:$details)
 						.tag(DetailMenu.Upgrades)
 				}
+				.tabViewStyle(.page(indexDisplayMode: .never))
 
 			}
+			.navigationBarTitle("\(details?.name ?? "")", displayMode: .inline)
 			.onAppear{
 				Task{
 					if details == nil{
@@ -43,12 +45,11 @@ struct PokemonDetailView: View {
 			}
 		}
 		
-
 	}
 }
 
 #Preview {
-	@Previewable let pokemon = Pokemon(id: 25, name: "Pikachu", isFavorite: true, types: ["electric"])
+	@Previewable let pokemon = Pokemon(id: 4, name: "Charmander", isFavorite: true, types: ["fire"])
 	PokemonDetailView(pokemon: pokemon)
 }
 

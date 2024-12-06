@@ -81,9 +81,6 @@
         }
       }
     },
-    "C" : {
-
-    },
     "dark" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -343,6 +340,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "ice" : {
       "extractionState" : "manual",

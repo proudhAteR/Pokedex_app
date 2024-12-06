@@ -36,8 +36,7 @@ struct PokemonRowView: View {
 			InfosView(pokemon: pokemon)
 			Spacer()
 			PokedexService().getImage(id: pokemon.id)
-				.frame(width: 132)
-		
+				.frame(width: 132)		
 		}
 	}
 }
@@ -45,5 +44,5 @@ struct PokemonRowView: View {
 
 #Preview {
 	@Previewable let pokemon = Pokemon(id: 25, name: "Pikachu", isFavorite: true, types: ["electric"])
-	PokemonDetailView(pokemon: pokemon)
+	PokemonView(pokemon: pokemon)
 }

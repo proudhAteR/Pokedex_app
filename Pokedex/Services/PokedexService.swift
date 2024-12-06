@@ -8,13 +8,13 @@ class PokedexService{
 	func fetchPokemon()async ->[Pokemon]{
 		do {
 			let pokemons: [Pokemon] = try await client.getPokemons()
-			
 			return pokemons
 		} catch {
 			print("Banana: \(error)")
 			return []
 		}
 	}
+
 	func formatId(id : Int) -> String {
 		return String(format: "%03d", id)
 	}
@@ -57,6 +57,25 @@ class PokedexService{
 			return nil 
 		}
 	}
+	
+	func fetchDetails(name: String) async -> Details? {
+		do {
+			let details = try await client.getDetails(name: name.lowercased())
+			return details
+		} catch {
+			print("Error fetching details: \(error)")
+			return nil
+		}
+	}
 
+	func fetchEvolution(evolution : String) async -> Pokemon{
+		let details = await fetchDetails(name: evolution)
+			return Pokemon(
+				id: details!.id,
+				name: details!.name,
+				isFavorite: details!.isFavorite,
+				types: details!.types
+			)
+	}
 	
 }

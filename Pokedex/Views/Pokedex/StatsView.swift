@@ -9,21 +9,20 @@ import SwiftUI
 
 struct StatsView: View {
 	@Binding var details: Details?
-	let pokemon: Pokemon
 	var body: some View {
 
 		ScrollView{
 			VStack(alignment: .leading, spacing: 12) {
-				BarStatSectionView(pokemon: pokemon, details: $details)
-					.padding(.bottom, 16)
-				DefenseSectionView(details: $details, pokemon: pokemon)
+				BarStatSectionView(details: $details)
+					.padding(.bottom, 12)
+				DefenseSectionView(details: $details)
 			}
 			.padding()
 		}
 	}
 		 
 	 private var pokemonPrimaryTypeColor: Color {
-		 PokemonType(rawValue: pokemon.types.first ?? "normal")?.color ?? .gray
+		 PokemonType(rawValue: details?.types.first ?? "normal")?.color ?? .gray
 	 }
 }
 

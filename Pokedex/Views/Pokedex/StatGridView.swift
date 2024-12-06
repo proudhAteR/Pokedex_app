@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct StatGridView : View {
-	var pokemon : Pokemon
 	@Binding var details : Details?
 	var body : some View {
 		let columns = [
@@ -27,7 +26,7 @@ struct StatGridView : View {
 			}
 			.progressViewStyle(
 				LinearProgressViewStyle(
-								tint: PokemonType(rawValue: pokemon.types.first!)!.color
+					tint: PokemonType(rawValue: details?.types.first ?? "normal")!.color
 							)
 			)
 	}
