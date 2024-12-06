@@ -8,14 +8,24 @@ struct PokemonListView: View {
 	@State private var showAlert: Bool = false
 	@State private var favsOnly = false
 	@State private var desc = false
-
+	@State private var didInit = false
 	private func initView() async {
 		if allPokemons.isEmpty {
 			allPokemons = await viewModel.getPokemons()
 			pokemons = allPokemons
+			didInit = true
+
 		}
 	}
 
+	private func displayPokemons() -> ForEach<[Pokemon], Int, NavigationLink<some View, PokemonDetailView>> {
+		return ForEach(pokemons) { pokemon in
+			NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
+				PokemonView(pokemon: pokemon).id(pokemon.id)
+			}
+		}
+	}
+	
 	var body: some View {
 		NavigationStack {
 			ScrollView {
@@ -27,17 +37,11 @@ struct PokemonListView: View {
 						favsOnly: $favsOnly, desc: $desc
 					)
 					.padding(.top, 16)
-					.onChange(of: pokemons) {
-						if pokemons.isEmpty {
-							showAlert = true
-						}
-					}
-
 					LazyVStack(spacing: 8) {
-						ForEach(pokemons) { pokemon in
-							NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
-								PokemonView(pokemon: pokemon).id(pokemon.id)
-							}
+						if !pokemons.isEmpty {
+							displayPokemons()
+						}else{
+							NoPokemonView(didInit: didInit)
 						}
 					}
 					.onAppear {
@@ -46,9 +50,9 @@ struct PokemonListView: View {
 						}
 					}
 					.padding(.top, 16)
-					.animation(.easeInOut(duration: 0.3), value: pokemons)
 				}
 			}
+			.animation(.easeInOut(duration: 0.2), value: pokemons)
 			.padding(.horizontal, 12)
 			.navigationTitle(LocalizedStringKey("app_name"))
 			.toolbar {
@@ -98,18 +102,7 @@ struct PokemonListView: View {
 					}
 				}
 			}
-			.alert(isPresented: $showAlert) {
-				Alert(
-					title: Text("No Pokémon Found"),
-					message: Text("We couldn't find any Pokémon matching your search."),
-					dismissButton: .default(Text("OK"), action: {
-						query = ""
-						pokemons = allPokemons
-						favsOnly = false
-						desc = false
-					})
-				)
-			}
+			
 		}
 	}
 }
@@ -117,4 +110,15 @@ struct PokemonListView: View {
 #Preview {
 	PokemonListView()
 }
+struct NoPokemonView: View {
+	let didInit: Bool
 
+	var body: some View {
+		if didInit {
+			Text("No Pokémon Found")
+				.font(.callout)
+				.foregroundStyle(Color.accentColor)
+				.bold()
+		}
+	}
+}

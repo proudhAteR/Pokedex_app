@@ -34,7 +34,7 @@ class PokedexClient{
 						.scaledToFit()
 				case .failure:
 					
-					Image(.electric)
+					Image(.pokeball)
 						.resizable()
 						.scaledToFit()
 				@unknown default:

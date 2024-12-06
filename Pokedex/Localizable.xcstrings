@@ -414,6 +414,7 @@
       }
     },
     "No Pokémon Found" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -428,6 +429,9 @@
           }
         }
       }
+    },
+    "No Upgrades Found" : {
+
     },
     "normal" : {
       "extractionState" : "manual",
@@ -712,22 +716,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eau"
-          }
-        }
-      }
-    },
-    "We couldn't find any Pokémon matching your search." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We couldn't find any Pokemon matching your search."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nous n’avons pas pu trouver le Pokemon que vous recherchez."
           }
         }
       }

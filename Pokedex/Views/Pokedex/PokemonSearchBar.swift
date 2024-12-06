@@ -12,19 +12,22 @@ struct PokemonSearchBar: View {
 		favsOnly = false
 		desc = false
 		Task {
-			pokemons = query.isEmpty ? allPokemons : await viewModel
-				.handleSearch(query: query)
+			
+			if query.isEmpty{
+				pokemons = allPokemons
+				favsOnly = false
+				desc = false
+			}else{
+				pokemons =  await viewModel.handleSearch(query: query)
+			}
+			
 		}
 	}
 
 	var body: some View {
 		HStack(spacing: 12) {
-			Button(action: {
-				makeSearch()
-			}) {
-				Image(systemName: "magnifyingglass")
-					.foregroundColor(.primary)
-			}
+			Image(systemName: "magnifyingglass")
+				.foregroundColor(.primary)
 
 			TextField(LocalizedStringKey("search_placeholder"), text: $query)
 				.textInputAutocapitalization(.none)
@@ -39,15 +42,25 @@ struct PokemonSearchBar: View {
 					makeSearch()
 				}
 
-			Button(action: {
-				isPresented = true
-			}) {
-				Image(systemName: "qrcode.viewfinder")
-					.foregroundColor(.primary)
-			}
-			.sheet(isPresented: $isPresented, onDismiss: {
-				makeSearch()}){
-				ScannerViewRepresentable(scanningRes: $query)
+			if query.isEmpty{
+				Button(action: {
+					isPresented = true
+				}) {
+					Image(systemName: "qrcode.viewfinder")
+						.foregroundColor(.primary)
+				}
+				.sheet(isPresented: $isPresented, onDismiss: {
+					makeSearch()}){
+					ScannerViewRepresentable(scanningRes: $query)
+				}
+			}else{
+				Button(action: {
+					query = ""
+					isPresented = false
+				}) {
+					Image(systemName: "xmark.circle.fill")
+						.foregroundColor(.primary)
+				}
 			}
 		}
 		.padding(.horizontal, 16)
