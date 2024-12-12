@@ -21,20 +21,22 @@ import SwiftUI
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 struct RootView: View {
-	@State private var isUserAuthenticated = false
 	@State private var isShowingLoginPage = false
-
+	@ObservedObject var viewModel = LoginViewModel()
 	func isPageChanging() -> Bool{
-		return isUserAuthenticated || isShowingLoginPage
+		return isUserAuth() || isShowingLoginPage
+	}
+	func isUserAuth() -> Bool {
+		return viewModel.isConnected
 	}
 	var body: some View {
 		ZStack {
 			if isPageChanging(){
-				if isUserAuthenticated {
+				if isUserAuth(){
 					PokemonListView()
 						.transition(.opacity)
 				} else{
-					LoginView(isConnected: $isUserAuthenticated)
+					LoginView(viewModel: viewModel)
 					.transition(.opacity)
 				}
 			} else {
@@ -48,5 +50,4 @@ struct RootView: View {
 
 #Preview {
     RootView()
-		.environment(\.locale, .init(identifier: "fr")) // French locale
 }

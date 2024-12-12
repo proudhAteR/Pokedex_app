@@ -10,7 +10,7 @@ class PokedexService{
 			let pokemons: [Pokemon] = try await client.getPokemons()
 			return pokemons
 		} catch {
-			print("Banana: \(error)")
+			print("Error fetching pokemons: \(error)")
 			return []
 		}
 	}

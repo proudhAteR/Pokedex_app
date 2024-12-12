@@ -27,7 +27,7 @@ struct InfosView: View {
 
 			HStack {
 				ForEach(pokemon.types, id: \.self) { type in
-					TypeView(type: type, detail:detail)
+					TypeView(type: type)
 				}
 			}
 		}

@@ -13,7 +13,7 @@ struct LoginView: View {
 	//
 	@State var username = ""
 	@State var password = ""
-	@Binding var isConnected : Bool
+	@ObservedObject var viewModel : LoginViewModel
 	var body: some View {
 		VStack(spacing: 28) {
 			LogoView()
@@ -21,7 +21,7 @@ struct LoginView: View {
 			InputsView(username: $username, password: $password)
 				.padding(.horizontal, 20)
 			ButtonView(
-				isConnected: $isConnected,
+				viewModel: viewModel,
 				username: $username,
 				password: $password
 			)
@@ -32,15 +32,15 @@ struct LoginView: View {
 	
 }
 #Preview {
-	@Previewable @State var connected = false
-	LoginView(isConnected: $connected)
+	let viewModel = LoginViewModel()
+	LoginView(viewModel: viewModel)
 }
 
+
 struct ButtonView: View {
-	@Binding var isConnected : Bool
+	@ObservedObject var viewModel : LoginViewModel
 	@Binding var username : String
 	@Binding var password : String
-	let authService = AuthService()
 	@State private var showErrorAlert = false
 
 	var body: some View {
@@ -48,14 +48,9 @@ struct ButtonView: View {
 			Button(
 				action: {
 					Task {
-						
-						isConnected = try await authService
-							.connect(
-								username: username.lowercased(),
-								password: password
-							)
-						
-						if !isConnected{
+						await viewModel
+							.connect(username: username, password: password)
+						if !viewModel.isConnected{
 							showErrorAlert = true
 						}
 					}
@@ -89,6 +84,7 @@ struct InputsView: View {
 		VStack(spacing: 24) {
 			TextField("username_placeholder", text: $username)
 				.textFieldStyle()
+				.autocapitalization(.none)
 
 			SecureField("password_placeholder", text: $password)
 				.textFieldStyle()

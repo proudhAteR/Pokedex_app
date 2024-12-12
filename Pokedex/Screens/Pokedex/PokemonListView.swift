@@ -9,6 +9,7 @@ struct PokemonListView: View {
 	@State private var favsOnly = false
 	@State private var desc = false
 	@State private var didInit = false
+	@State private var isPresented = false
 	private func initView() async {
 		if allPokemons.isEmpty {
 			allPokemons = await viewModel.getPokemons()
@@ -29,7 +30,6 @@ struct PokemonListView: View {
 	var body: some View {
 		NavigationStack {
 			ScrollView {
-			VStack(spacing: 16) {
 					PokemonSearchBar(
 						query: $query,
 						pokemons: $pokemons,
@@ -37,68 +37,58 @@ struct PokemonListView: View {
 						favsOnly: $favsOnly, desc: $desc
 					)
 					.padding(.top, 16)
-					LazyVStack(spacing: 8) {
+				VStack(spacing: 8) {
 						if !pokemons.isEmpty {
 							displayPokemons()
 						}else{
 							NoPokemonView(didInit: didInit)
 						}
 					}
+				.animation(.easeInOut(duration: 0.2), value: pokemons)
 					.onAppear {
 						Task {
 							await initView()
 						}
 					}
 					.padding(.top, 16)
-				}
 			}
-			.animation(.easeInOut(duration: 0.2), value: pokemons)
 			.padding(.horizontal, 12)
 			.navigationTitle(LocalizedStringKey("app_name"))
 			.toolbar {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					Menu {
-						Button {
-							desc.toggle()
-							Task {
-								pokemons = await viewModel
-									.sort(
-										desc: desc,
-										pokemons: pokemons
-									)
-							}
-						} label: {
-							HStack {
-								Text(String(format: "By ID (%@)", desc ? "Ascending" : "Descending"))
-								Spacer()
-								Image(systemName: desc ? "arrow.up" : "arrow.down")
-							}
-							.padding()
-							.cornerRadius(8)
-						}
-
-						Button {
-							favsOnly.toggle()
-							Task {
-								pokemons = await viewModel
-									.favorites(desc: desc, favsOnly: favsOnly, pokemons: pokemons)
-							}
-						} label: {
-							HStack {
-								Text(favsOnly ? "All pokemons" : "Favorites only")
-								Spacer()
-								Image(systemName: !favsOnly ? "heart.fill" : "heart")
-							}
-							.padding()
-							.cornerRadius(8)
-						}
-
-						Button("Filter by type") {
-							print("Filter option selected")
-						}
+						CustomMenuButton(
+							action: {
+								desc.toggle()
+								Task {
+									pokemons = await viewModel.sort(desc: desc, pokemons: pokemons)
+								}
+							},
+							label: String(format: "By ID (%@)", desc ? "Ascending" : "Descending"),
+							image: desc ? "arrow.up" : "arrow.down"
+						)
+						
+						CustomMenuButton(
+							action: {
+								favsOnly.toggle()
+								Task {
+									pokemons = await viewModel.favorites(desc: desc, favsOnly: favsOnly, pokemons: pokemons)
+								}
+							},
+							label: favsOnly ? "All pokemons" : "Favorites only",
+							image: !favsOnly ? "heart.fill" : "heart"
+						)
+						
+						CustomMenuButton(action: {
+							isPresented = true
+						}, label: "Filter by type", image: "number")
+						
 					} label: {
 						Image(systemName: "slider.horizontal.3")
 							.foregroundStyle(.black)
+					}
+					.sheet(isPresented: $isPresented){
+						FilterView()
 					}
 				}
 			}
@@ -108,7 +98,7 @@ struct PokemonListView: View {
 }
 
 #Preview {
-	PokemonListView()
+	PokemonListView().environment(\.locale, .init(identifier: "fr"))
 }
 struct NoPokemonView: View {
 	let didInit: Bool
@@ -119,6 +109,51 @@ struct NoPokemonView: View {
 				.font(.callout)
 				.foregroundStyle(Color.accentColor)
 				.bold()
+		}else{
+			ProgressView()
 		}
 	}
 }
+struct CustomMenuButton: View {
+	let action: () -> Void
+	let label: String
+	let image: String
+
+	var body: some View {
+		Button(action: action) {
+			HStack {
+				Text(label)
+				Spacer()
+				Image(systemName: image)
+			}
+			.padding()
+			.cornerRadius(8)
+		}
+	}
+}
+
+struct FilterView: View {
+	let columns = [
+		GridItem(.flexible(), alignment: .center),
+		GridItem(.flexible(), alignment: .center)
+	]
+
+	private func filterBy(type: String) {
+		print("Filter by \(type)")
+	}
+
+	var body: some View {
+		LazyVGrid(columns: columns, spacing: 16) {
+			ForEach(PokemonType.allCases, id: \.self) { type in
+				Button(action: {
+					filterBy(type: type.rawValue)
+				}) {
+					TypeView(type: type.rawValue, filter: true)
+						.cornerRadius(8)
+				}
+			}
+		}
+		.padding()
+	}
+}
+

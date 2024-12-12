@@ -21,14 +21,8 @@ struct PokemonPosterView: View {
 		}
 			.ignoresSafeArea()
 			.background(
-				LinearGradient(
-					gradient: Gradient(colors: [
-						PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.5),
-						PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.opacity(0.8)
-					]),
-					startPoint: .top,
-					endPoint: .bottom
-				)
+				RoundedRectangle(cornerRadius: 15)
+				.fill(PokemonType(rawValue: pokemon.types.first ?? "normal")!.color.gradient.opacity(0.75))
 				.ignoresSafeArea()
 			)
 			.overlay{

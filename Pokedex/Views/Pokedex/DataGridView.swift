@@ -30,11 +30,11 @@ struct DataGrid : View {
 			GridItem(.flexible(), alignment: .leading)
 		], spacing: 16) {
 			GridTitleView(title: "Species")
-			Text("\(details?.speciesName ?? "B")")
+			Text("\(details?.speciesName ?? "")")
 			GridTitleView(title: "Height")
-			Text("\(details?.height ?? 4)")
+			Text("\(details?.height ?? 0)")
 			GridTitleView(title: "Weight")
-			Text("\(details?.weight ?? 80)")
+			Text("\(details?.weight ?? 0)")
 			GridTitleView(title: "Weaknesses")
 			HStack {
 				ForEach(details?.weaknesses ?? [], id: \.self){ weakness in

@@ -27,9 +27,6 @@
         }
       }
     },
-    "All pokemons" : {
-
-    },
     "app_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -215,9 +212,6 @@
           }
         }
       }
-    },
-    "Favorites only" : {
-
     },
     "fighting" : {
       "extractionState" : "manual",

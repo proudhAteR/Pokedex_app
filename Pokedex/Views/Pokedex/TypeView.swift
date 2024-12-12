@@ -3,7 +3,7 @@ import SwiftUI
 
 struct TypeView: View {
 	var type: String
-	var detail : Bool = false
+	var filter : Bool = false
 	var body: some View {
 		let localizedTypeName = PokedexService().localizedType(for: type)
 		HStack {
@@ -13,9 +13,10 @@ struct TypeView: View {
 				.frame(width: 20, height: 20, alignment: .center)
 			
 			Text(localizedTypeName.capitalized)
-				.font(detail ? .caption : .caption)
+				.font(.caption)
 			
 		}
+		.frame(maxWidth: filter ? .infinity : nil) // Make the button occupy full column width
 		.lineLimit(1)
 		.padding(.horizontal, 4)
 		.padding(.vertical, 4)

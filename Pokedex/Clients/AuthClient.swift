@@ -15,14 +15,13 @@ class AuthClient {
 			let authRequest = AuthRequest(username: username, password: password)
 			
 			// Perform the API call
-			let response: AuthResponse = try await ApiClient.shared.post(
+			let _: AuthResponse = try await ApiClient.shared.post(
 				apiUrl: url,
 				body: authRequest,
 				defaultResponse: AuthResponse(
 					token: username
 				)
 			)
-			print(response.token)
 			return true
 		} catch {
 			return false

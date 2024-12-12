@@ -8,7 +8,7 @@ class AuthService {
             let users: [User] = try await authClient.getUsers()
             return users
         } catch {
-            print("Don't forget to handle errors correctly: \(error)")
+            print("Unable to get users: \(error)")
             return []
         }
     }
