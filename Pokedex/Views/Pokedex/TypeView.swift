@@ -4,6 +4,12 @@ import SwiftUI
 struct TypeView: View {
 	var type: String
 	var filter : Bool = false
+	var selectedTypes: Set<PokemonType> = []
+	private func colorize() -> Bool {
+		return selectedTypes
+			.contains(PokemonType(rawValue: type)!) || !filter
+	}
+	
 	var body: some View {
 		let localizedTypeName = PokedexService().localizedType(for: type)
 		HStack {
@@ -16,11 +22,15 @@ struct TypeView: View {
 				.font(.caption)
 			
 		}
-		.frame(maxWidth: filter ? .infinity : nil) // Make the button occupy full column width
+		.frame(maxWidth: filter ? .infinity : nil)
 		.lineLimit(1)
-		.padding(.horizontal, 4)
-		.padding(.vertical, 4)
-		.background(PokemonType(rawValue: type)!.color)
+		.padding(filter ? 8 :4)
+		.background(
+			colorize() ? PokemonType(
+					rawValue: type
+				)!.color
+			: .gray
+		)
 		.foregroundColor(.white)
 		.cornerRadius(4)
 	}

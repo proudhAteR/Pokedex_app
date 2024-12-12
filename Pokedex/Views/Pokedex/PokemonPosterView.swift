@@ -16,8 +16,9 @@ struct PokemonPosterView: View {
 				InfosView(pokemon: pokemon, detail:true)
 			}
 			.padding(.leading)
-			.padding(.bottom, 36)
+			.padding(.bottom, 32)
 			MenuPickerView(selection: $selection)
+				.clipShape(RoundedRectangle(cornerSize: CGSize(width: 160, height: 160)))
 		}
 			.ignoresSafeArea()
 			.background(
@@ -40,7 +41,7 @@ struct HoveringTextView: View {
 		GeometryReader { geometry in
 			Text("\(name)")
 				.font(.system(size: 120, weight: .bold))
-				.foregroundColor(Color.white.opacity(0.150))
+				.foregroundColor(Color.white.opacity(0.1))
 				.minimumScaleFactor(0.1)
 				.lineLimit(1)
 				.frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
@@ -48,4 +49,9 @@ struct HoveringTextView: View {
 		.offset(x: 4, y: -96)
 		.padding()
 	}
+}
+
+#Preview {
+	@Previewable let pokemon = Pokemon(id: 4, name: "Charmander", isFavorite: true, types: ["fire"])
+	PokemonDetailView(pokemon: pokemon)
 }

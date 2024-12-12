@@ -1,26 +1,22 @@
 import SwiftUI
 
 struct PokemonSearchBar: View {
-	@ObservedObject var viewModel = PokemonListViewModel()
 	@Binding var query: String
 	@Binding var pokemons: [Pokemon]
 	@Binding var allPokemons: [Pokemon]
-	@Binding var favsOnly : Bool
-	@Binding var desc : Bool
+	@ObservedObject var viewModel : PokemonListViewModel
 	@State var isPresented = false
 	private func makeSearch() {
-		favsOnly = false
-		desc = false
+		viewModel.setDesc(value: false)
+		viewModel.setFavs(value: false)
+		viewModel.emptySelectedTypes()
+
 		Task {
-			
 			if query.isEmpty{
 				pokemons = allPokemons
-				favsOnly = false
-				desc = false
 			}else{
 				pokemons =  await viewModel.handleSearch(query: query)
 			}
-			
 		}
 	}
 
