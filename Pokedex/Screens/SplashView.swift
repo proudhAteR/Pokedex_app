@@ -4,8 +4,7 @@ struct SplashView: View {
     // Pour faire un délai, vous pouvez utiliser l'événement onAppear et
     // exécuter un code asynchrone après X secondes en utilisant :
     //  - https://developer.apple.com/documentation/dispatch/dispatchqueue/2300020-asyncafter
-	
-	@Binding var isShowingLoginPage : Bool
+	@EnvironmentObject var viewModel : LoginViewModel
 		var body: some View {
 			VStack {
 				Image(.logo)
@@ -20,7 +19,7 @@ struct SplashView: View {
 			.onAppear {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 					withAnimation {
-						isShowingLoginPage = true
+						viewModel.showLogin()
 					}
 				}
 			}
@@ -31,6 +30,6 @@ struct SplashView: View {
 
 
 #Preview {
-	@Previewable @State var isShowingLoginPage : Bool = false
-	SplashView(isShowingLoginPage: $isShowingLoginPage)
+	SplashView()
+		.environmentObject(LoginViewModel())
 }

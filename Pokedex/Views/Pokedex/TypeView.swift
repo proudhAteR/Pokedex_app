@@ -24,7 +24,7 @@ struct TypeView: View {
 		}
 		.frame(maxWidth: filter ? .infinity : nil)
 		.lineLimit(1)
-		.padding(filter ? 8 :4)
+		.padding(filter ? 16 :4)
 		.background(
 			colorize() ? PokemonType(
 					rawValue: type

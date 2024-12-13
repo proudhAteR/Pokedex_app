@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FilterView: View {
-	@ObservedObject var vm : PokemonListViewModel
+	@EnvironmentObject var vm : PokemonListViewModel
 	let columns = [
 		GridItem(.flexible(), alignment: .center),
 		GridItem(.flexible(), alignment: .center)
@@ -49,6 +49,6 @@ struct FilterView: View {
 }
 
 #Preview {
-	@Previewable let vm = PokemonListViewModel()
-	FilterView(vm: vm)
+	FilterView()
+		.environmentObject(PokemonListViewModel())
 }

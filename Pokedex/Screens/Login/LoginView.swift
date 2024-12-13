@@ -13,7 +13,7 @@ struct LoginView: View {
 	//
 	@State var username = ""
 	@State var password = ""
-	@ObservedObject var viewModel : LoginViewModel
+	@EnvironmentObject var viewModel : LoginViewModel
 	var body: some View {
 		VStack(spacing: 28) {
 			LogoView()
@@ -21,7 +21,6 @@ struct LoginView: View {
 			InputsView(username: $username, password: $password)
 				.padding(.horizontal, 20)
 			ButtonView(
-				viewModel: viewModel,
 				username: $username,
 				password: $password
 			)
@@ -32,13 +31,13 @@ struct LoginView: View {
 	
 }
 #Preview {
-	let viewModel = LoginViewModel()
-	LoginView(viewModel: viewModel)
+	LoginView()
+		.environmentObject(LoginViewModel())
 }
 
 
 struct ButtonView: View {
-	@ObservedObject var viewModel : LoginViewModel
+	@EnvironmentObject var viewModel : LoginViewModel
 	@Binding var username : String
 	@Binding var password : String
 	@State private var showErrorAlert = false

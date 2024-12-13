@@ -19,35 +19,46 @@ import SwiftUI
 //         aider à simplifier le code pour les 3 vues principaux (Login, List, Detail).
 //
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 struct RootView: View {
-	@State private var isShowingLoginPage = false
-	@ObservedObject var viewModel = LoginViewModel()
-	func isPageChanging() -> Bool{
-		return isUserAuth() || isShowingLoginPage
+	@EnvironmentObject var viewModel: LoginViewModel
+
+	private var currentView: some View {
+		Group {
+			if isUserAuth {
+				PokemonListView()
+					.environmentObject(PokemonListViewModel())
+			} else if isLoginShown {
+				LoginView()
+			} else {
+				SplashView()
+			}
+		}
+		.transition(.opacity)
 	}
-	func isUserAuth() -> Bool {
-		return viewModel.isConnected
+
+	private var isUserAuth: Bool {
+		viewModel.isConnected
 	}
+
+	private var isLoginShown: Bool {
+		viewModel.isLoginShown
+	}
+
+	private func isPageChanging() -> Bool {
+		return isLoginShown || isUserAuth
+	}
+	
 	var body: some View {
 		ZStack {
-			if isPageChanging(){
-				if isUserAuth(){
-					PokemonListView()
-						.transition(.opacity)
-				} else{
-					LoginView(viewModel: viewModel)
-					.transition(.opacity)
-				}
-			} else {
-				SplashView(isShowingLoginPage: $isShowingLoginPage)
-				.transition(.opacity)
-			}
+			currentView
 		}
 		.animation(.easeInOut(duration: 0.5), value: isPageChanging())
 	}
 }
 
+
+
 #Preview {
     RootView()
+		.environmentObject(LoginViewModel())
 }

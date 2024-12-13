@@ -4,7 +4,7 @@ struct PokemonSearchBar: View {
 	@Binding var query: String
 	@Binding var pokemons: [Pokemon]
 	@Binding var allPokemons: [Pokemon]
-	@ObservedObject var viewModel : PokemonListViewModel
+	@EnvironmentObject var viewModel : PokemonListViewModel
 	@State var isPresented = false
 	private func makeSearch() {
 		viewModel.setDesc(value: false)

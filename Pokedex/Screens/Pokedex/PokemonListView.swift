@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PokemonListView: View {
-	@ObservedObject var viewModel = PokemonListViewModel()
+	@EnvironmentObject var viewModel : PokemonListViewModel
 	@State private var allPokemons: [Pokemon] = []
 	@State private var pokemons: [Pokemon] = []
 	@State private var query: String = ""
@@ -32,8 +32,7 @@ struct PokemonListView: View {
 				PokemonSearchBar(
 					query: $query,
 					pokemons: $pokemons,
-					allPokemons: $allPokemons,
-					viewModel: viewModel
+					allPokemons: $allPokemons
 				)
 				.padding(.top, 16)
 				
@@ -102,8 +101,7 @@ struct PokemonListView: View {
 						}
 					}) {
 						NavigationView {
-							FilterView(vm: viewModel)
-								
+							FilterView()
 						}
 					}
 
@@ -114,7 +112,9 @@ struct PokemonListView: View {
 }
 
 #Preview {
-	PokemonListView().environment(\.locale, .init(identifier: "en"))
+	PokemonListView()
+		.environment(\.locale, .init(identifier: "en"))
+		.environmentObject(PokemonListViewModel())
 }
 
 struct NoPokemonView: View {
